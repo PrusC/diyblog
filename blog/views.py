@@ -9,3 +9,7 @@ def index(request):
 
 class BloggerDetailView(generic.DetailView):
     model = models.Blogger
+
+
+class PostDetailView(generic.DetailView):
+    model = models.Post
