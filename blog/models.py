@@ -16,7 +16,6 @@ class Blogger(models.Model):
         null=True,
         blank=True)
 
-
     def __str__(self):
         return self.user.username
 
@@ -58,3 +57,11 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', args=[str(self.id)])
+
+
+class Comment(models.Model):
+    author = models.ForeignKey(Blogger, on_delete=models.SET_NULL, null=False)
+    blog = models.ForeignKey(Post, on_delete=models.CASCADE, null=False)
+    text = models.TextField(null=False, blank=False)
+    publish = models.DateTimeField(default=timezone.now)
+    
