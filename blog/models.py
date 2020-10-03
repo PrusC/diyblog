@@ -60,7 +60,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    author = models.ForeignKey(Blogger, on_delete=models.SET_NULL, null=False)
+    author = models.ForeignKey(Blogger, on_delete=models.CASCADE, null=False)
     blog = models.ForeignKey(Post, on_delete=models.CASCADE, null=False)
     text = models.TextField(null=False, blank=False)
     publish = models.DateTimeField(default=timezone.now)

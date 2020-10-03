@@ -20,6 +20,21 @@
 
     </div>
 
+    <div class="row">
+        <h1 class="comments">Comments</h1>
+    </div>
+
+    <div class="row">
+        <div class="comments">
+            {% for comment in post.comment_set.all %}
+                <p>
+                    <a href="{{ comment.author.get_absolute_url }}">{{ comment.author }}</a> ({{ comment.publish }}) - {{ comment.text }}
+                </p>
+            {% endfor %}
+        
+        </div>
+    </div>
+
 </div>
 
 {% endblock  %}

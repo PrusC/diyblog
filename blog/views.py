@@ -13,3 +13,11 @@ class BloggerDetailView(generic.DetailView):
 
 class PostDetailView(generic.DetailView):
     model = models.Post
+
+
+class PostListView(generic.ListView):
+    model = models.Post
+
+
+class BloggerListView(generic.ListView):
+    model = models.Blogger
