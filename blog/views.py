@@ -17,7 +17,9 @@ class PostDetailView(generic.DetailView):
 
 class PostListView(generic.ListView):
     model = models.Post
+    paginate_by = 10
 
 
 class BloggerListView(generic.ListView):
     model = models.Blogger
+    paginate_by = 10

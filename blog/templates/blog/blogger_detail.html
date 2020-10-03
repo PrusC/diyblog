@@ -20,9 +20,15 @@
     <div class="row">
     <ul>
         <h1>Blogs list</h1>
-        {% for post in blogger.post_set.all %}
-            <li><a href="">{{ blog.title }}</a> ({{ blog.publish }})</li>
-        {% endfor %}
+        {% if blogger.post_set.all %}
+            {% for post in blogger.post_set.all %}
+                <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a> ({{ post.publish }})</li>
+            {% endfor %}
+        {% else %}
+            <p>There are no blogs</p>
+        {% endif %}
+
+        
     </ul>
     
     </div>
