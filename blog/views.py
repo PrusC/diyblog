@@ -34,4 +34,4 @@ class BlogCommentCreate(LoginRequiredMixin, CreateView):
     fields = ['text',]
 
     def get_success_url(self):
-        return reverse()
+        return reverse('blog-detail', kwargs={'pk': self.kwargs['pk']})
