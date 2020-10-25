@@ -63,7 +63,7 @@ class Comment(models.Model):
     author = models.ForeignKey(Blogger, on_delete=models.CASCADE, null=False)
     blog = models.ForeignKey(Post, on_delete=models.CASCADE, null=False)
     text = models.TextField(null=False, blank=False)
-    publish = models.DateTimeField(default=timezone.now)
+    publish = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ('-publish',)

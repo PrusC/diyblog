@@ -34,12 +34,18 @@ class BlogCommentCreate(LoginRequiredMixin, CreateView):
     fields = ['text',]
 
     def get_success_url(self):
-        return reverse('blog-detail', kwargs={'pk': self.kwargs['pk']})
+        return reverse('post-detail', kwargs={'pk': self.kwargs['pk']})
 
     def get_context_data(self, **kwargs):
         context = super(BlogCommentCreate, self).get_context_data(**kwargs)
         context["blog"] = get_object_or_404(models.Post, pk=self.kwargs['pk'])
         return context
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user.blogger
+        form.instance.blog = get_object_or_404(models.Post, pk=self.kwargs['pk'])
+
+        return super(BlogCommentCreate, self).form_valid(form)
 
     
     
