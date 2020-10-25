@@ -15,7 +15,8 @@
             {% csrf_token %}
             {{ form }}
 
-            <input id="submit-btn" type="submit" value="Log in">
+            <input id="submit-btn" type="submit" value="login" />
+            <input type="hidden" name="text" value="{{ next }}" />
         </form>
     {% endif %}
 {% endblock %}

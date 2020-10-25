@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
@@ -35,3 +35,11 @@ class BlogCommentCreate(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse('blog-detail', kwargs={'pk': self.kwargs['pk']})
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogCommentCreate, self).get_context_data(**kwargs)
+        context["blog"] = get_object_or_404(models.Post, pk=self.kwargs['pk'])
+        return context
+
+    
+    
