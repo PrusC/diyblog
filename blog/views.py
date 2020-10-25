@@ -38,7 +38,7 @@ class BlogCommentCreate(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(BlogCommentCreate, self).get_context_data(**kwargs)
-        context["blog"] = get_object_or_404(models.Post, pk=self.kwargs['pk'])
+        context["post"] = get_object_or_404(models.Post, pk=self.kwargs['pk'])
         return context
 
     def form_valid(self, form):
@@ -47,5 +47,3 @@ class BlogCommentCreate(LoginRequiredMixin, CreateView):
 
         return super(BlogCommentCreate, self).form_valid(form)
 
-    
-    

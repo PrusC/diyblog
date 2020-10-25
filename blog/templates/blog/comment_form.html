@@ -2,6 +2,8 @@
 
 {% block content %}
 
+    <p>New comment for post <a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a> by <a href="{% url 'blogger-detail' post.author.pk %}">{{ post.author }}</a></p>
+
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_table }} 
