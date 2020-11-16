@@ -25,11 +25,11 @@ class Blogger(models.Model):
 
     @property
     def first_name(self):
-        self.user.first_name
+        return self.user.first_name
 
     @property
     def last_name(self):
-        self.user.last_name
+        return self.user.last_name
 
 
 @receiver(post_save, sender=User)
